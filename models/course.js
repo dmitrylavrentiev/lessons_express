@@ -57,7 +57,6 @@ class Course {
     static async getCourse(id) {
         const courses = await this.getAll()
         return courses.find(el => el.id === id)
-
     }
 
     static async update(title, author, id) {

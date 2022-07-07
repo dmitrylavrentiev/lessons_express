@@ -5,6 +5,7 @@ const homeRoutes = require('./routes/home')
 const aboutRoutes = require('./routes/about')
 const coursesRoutes = require('./routes/courses')
 const addRoutes = require('./routes/add')
+const cartRoutes = require('./routes/cart')
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use('/', homeRoutes)
 app.use('/about', aboutRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/add', addRoutes)
+app.use('/cart', cartRoutes)
 
 
 

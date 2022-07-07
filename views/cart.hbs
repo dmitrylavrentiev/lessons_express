@@ -1,0 +1,13 @@
+<h1>Cart</h1>
+{{#if cart}}
+<ul class="collection">
+    {{#each cart}}
+        <li class="collection-item">
+            {{this}}
+        </li>
+    {{/each}}
+</ul>
+
+{{else}}
+<h3>Cart is empty</h3>
+{{/if}}
