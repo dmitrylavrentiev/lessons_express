@@ -2,8 +2,8 @@
 {{#if courses}}
 <div class="collection">
     {{#each courses}}
-        <a href="/courses/{{id}}" class="collection-item d-flex">
-            <span><b>{{title}}</b> - {{author}}</span>
+        <a href="/courses/{{_id}}" class="collection-item d-flex">
+            <span><b>{{this.title}}</b> - {{this.author}}</span>
             <i class="material-icons">send</i>
         </a>
     {{/each}}

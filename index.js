@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const mongoos = require('mongoose')
+
 const homeRoutes = require('./routes/home')
 const aboutRoutes = require('./routes/about')
 const coursesRoutes = require('./routes/courses')
@@ -26,6 +28,20 @@ app.use('/about', aboutRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/add', addRoutes)
 app.use('/cart', cartRoutes)
+
+async function start() {
+    try {
+        const url = 'mongodb+srv://dlavrentiev:sqPNuNKhgbxSkjGF@cluster0.n1mrj.mongodb.net/shop'
+        const a = await mongoos.connect(url, {useNewUrlParser: true})
+        //console.log(a);
+    } catch (e) {
+        console.log(e);
+    }
+    
+}
+
+start()
+
 
 
 

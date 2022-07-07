@@ -5,7 +5,7 @@ const Cart = require('../models/cart')
 const router = Router()
 
 router.get('/', async (req, res) => {
-    const cart = await Cart.getAll()
+    const cart = await Cart.find().lean()
     res.render('cart', {
         title: 'Cart',
         isActiveCart: true,
@@ -14,9 +14,9 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    const courseId = req.params.id
-    await Cart.addToCart(courseId)
-    const cart = await Cart.getAll()
+    const cart = new Cart({id: req.params.id})
+    await  cart.save()
+    const carts = await Cart.find().lean()
     res.json(cart)
 })
 

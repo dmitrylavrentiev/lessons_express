@@ -5,8 +5,8 @@ const Courses = require('../models/course')
 const router = Router()
 
 router.get('/', async (req, res) => {
-    const courses = await Courses.getAll()
-
+    const courses = await Courses.find().lean()
+console.log(courses);
     res.render('courses', {
         title: 'Courses',
         isActiveC: true,
@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const courseId = req.params.id
-    const course = await Courses.getCourse(courseId)
+    const course = await Courses.findById(courseId).lean()
     
-    res.render('course', {
+    res.render('course', { 
         course,
         title: course?.title
     })
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/:id/edit', async (req, res) => {
     const courseId = req.params.id
-    const course = await Courses.getCourse(courseId)
+    const course = await Courses.findById(courseId).lean()
     
     res.render('course-edit', {
         course,
@@ -35,10 +35,10 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 router.post('/edit', async (req, res) => {
-    console.log(req.body);
+
     const {course_name, author, id} = req.body
 
-    await Courses.update(course_name, author, id)
+    await Courses.findByIdAndUpdate(id, {title: course_name, author}).lean()
     res.redirect('/courses')
 })
 
@@ -46,7 +46,7 @@ router.get('/:id/remove', async (req, res) => {
     const courseId = req.params.id
 
     try {
-        await Courses.removeCourse(courseId)
+        await Courses.findOneAndDelete(courseId).lean()
         res.redirect('/courses')
     } catch (error) {
         res.render('error', {
