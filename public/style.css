@@ -1,0 +1,8 @@
+.nav-wrapper {
+    padding: 0 40px;
+}
+
+.collection a.collection-item.d-flex {
+    display: flex;
+    justify-content: space-between;
+}

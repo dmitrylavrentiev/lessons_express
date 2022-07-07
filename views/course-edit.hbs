@@ -1,0 +1,17 @@
+<h1>Edit course</h1>
+<form action="/courses/edit" method="post">
+    <div class="input-field col s12">
+        <input id="course_name" type="text" name="course_name" value="{{course.title}}">
+        <label for="course_name">Course name</label>
+    </div>
+    <div class="input-field col s12">
+        <input id="author" type="text" name="author" value="{{course.author}}">
+        <label for="author">Author</label>
+    </div>
+
+    <input name="id" type="hidden" value="{{course.id}}">
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+    </button>
+</form>

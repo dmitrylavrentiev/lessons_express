@@ -1,0 +1,14 @@
+<h1>Courses list</h1>
+{{#if courses}}
+<div class="collection">
+    {{#each courses}}
+        <a href="/courses/{{id}}" class="collection-item d-flex">
+            <span><b>{{title}}</b> - {{author}}</span>
+            <i class="material-icons">send</i>
+        </a>
+    {{/each}}
+</div>
+
+{{else}}
+<h3>Courses list is empty</h3>
+{{/if}}
