@@ -1,0 +1,53 @@
+<div class="row auth">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#login">Login</a></li>
+      <li class="tab col s3"><a href="#registration">Registration</a></li>
+    </ul>
+  </div>
+  <div id="login" class="col s12">
+    <h2>Login</h2>
+    {{#if err}}
+        <div class="card-panel teal red">{{err}}</div>
+    {{/if}}
+    <form action="/auth/login" method="post">
+      <div class="input-field col s12">
+        <input id="email" type="email" name="email">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="password" type="password" name="password">
+        <label for="password">Password</label>
+      </div>
+      <input type="hidden" name="_csrf" value="{{csurf}}" />
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Login
+      </button>
+    </form>
+
+  </div>
+  <div id="registration" class="col s12">
+    <h2>Registration</h2>
+    {{#if err}}
+        <div class="card-panel teal red">{{err}}</div>
+    {{/if}}
+    <form action="/auth/registration" method="post">
+      <div class="input-field col s12">
+        <input id="name" type="text" name="name">
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="remail" type="email" name="email">
+        <label for="remail">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="password" type="password" name="password">
+        <label for="password">Password</label>
+      </div>
+      <input type="hidden" name="_csrf" value="{{csurf}}" />
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Send
+      </button>
+    </form>
+  </div>
+</div>

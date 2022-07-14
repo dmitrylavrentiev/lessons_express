@@ -1,12 +1,12 @@
 const {Router} = require('express')
 
 const Courses = require('../models/course')
+const auth = require('../middleware/auth')
 
 const router = Router()
 
 router.get('/', async (req, res) => {
     const courses = await Courses.find().lean()
-console.log(courses);
     res.render('courses', {
         title: 'Courses',
         isActiveC: true,
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
     })
 })
 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', auth, async (req, res) => {
     const courseId = req.params.id
     const course = await Courses.findById(courseId).lean()
     
@@ -34,7 +34,7 @@ router.get('/:id/edit', async (req, res) => {
     })
 })
 
-router.post('/edit', async (req, res) => {
+router.post('/edit', auth, async (req, res) => {
 
     const {course_name, author, id} = req.body
 
@@ -42,7 +42,7 @@ router.post('/edit', async (req, res) => {
     res.redirect('/courses')
 })
 
-router.get('/:id/remove', async (req, res) => {
+router.get('/:id/remove', auth, async (req, res) => {
     const courseId = req.params.id
 
     try {

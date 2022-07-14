@@ -1,22 +1,36 @@
 <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo center">Logo</a>
-      <ul class="left hide-on-med-and-down">
-        <li {{#if isActiveH }} class="active" {{/if}}>
-          <a href="/">Home</a>
-        </li>
-        <li {{#if isActiveA }} class="active" {{/if}}>
-          <a href="/about">About</a>
-          </li>
-        <li {{#if isActiveC }} class="active" {{/if}}>
-          <a href="/courses">Courses</a>
-        </li>
-        <li {{#if isActiveAdd }} class="active" {{/if}}>
-          <a href="/add">Add course</a>
-        </li>
-        <li {{#if isActiveCart }} class="active" {{/if}}>
-          <a href="/cart">Cart</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div class="nav-wrapper">
+    {{#if isAuth}}
+    <a href="/" class="brand-logo center">{{currentUser.name}}</a>
+    {{/if}}
+    <ul class="left hide-on-med-and-down">
+      <li {{#if isActiveH }} class="active" {{/if}}>
+        <a href="/">Home</a>
+      </li>
+      <li {{#if isActiveA }} class="active" {{/if}}>
+        <a href="/about">About</a>
+      </li>
+      <li {{#if isActiveC }} class="active" {{/if}}>
+        <a href="/courses">Courses</a>
+      </li>
+      {{#if isAuth}}
+      <li {{#if isActiveAdd }} class="active" {{/if}}>
+        <a href="/add">Add course</a>
+      </li>
+      <li {{#if isActiveCart }} class="active" {{/if}}>
+        <a href="/cart">Cart</a>
+      </li>
+      <li>
+        <a href="/auth/logout">Logout</a>
+      </li>
+      {{else}}
+      <li {{#if isActiveAuth }} class="active" {{/if}}>
+        <a href="/auth/login">Login</a>
+      </li>
+      {{/if}}
+
+      
+      
+    </ul>
+  </div>
+</nav>

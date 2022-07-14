@@ -8,6 +8,7 @@
                 <span class="card-title">{{author}}</span>
                 <p>{{_id}}</p>
             </div>
+            {{#if @root.isAuth}}
             <div class="card-action">
                 <a class="waves-effect waves-light btn-flat" href="/courses/{{_id}}/edit">
                     <i class="material-icons right">edit</i>
@@ -22,6 +23,7 @@
                     Add to cart
                 </a>
             </div>
+            {{/if}}
         </div>
     </div>
 </div>
