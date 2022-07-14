@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
     res.render('auth/login', {
         isActiveAuth: true,
         title: "Authorisation",
-        error: req.flash('err')
+        err: req.flash('err')
     })
 })
 

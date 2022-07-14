@@ -8,7 +8,9 @@
   <div id="login" class="col s12">
     <h2>Login</h2>
     {{#if err}}
-        <div class="card-panel teal red">{{err}}</div>
+        <div class="card-panel red">
+          <span class="white-text">{{err}}</span>
+        </div>
     {{/if}}
     <form action="/auth/login" method="post">
       <div class="input-field col s12">
@@ -29,7 +31,9 @@
   <div id="registration" class="col s12">
     <h2>Registration</h2>
     {{#if err}}
-        <div class="card-panel teal red">{{err}}</div>
+        <div class="card-panel red">
+          <span class="white-text">{{err}}</span>
+        </div>
     {{/if}}
     <form action="/auth/registration" method="post">
       <div class="input-field col s12">
